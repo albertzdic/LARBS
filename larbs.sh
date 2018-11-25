@@ -214,6 +214,10 @@ sudo -u "$name" vim -E -c "PlugUpdate|visual|q|q" >/dev/null
 # Enable services here.
 serviceinit NetworkManager cronie
 
+# To disable touchpad
+dialog --title "Message"  --yesno "Do you want to\ disable the touchpad?" 6 25 ||  xinput disable $(echo "*$(xinput list --name-only | grep -i touchpad)*"|sed s/*/\'/g); clear
+
+
 # Most important command! Get rid of the beep!
 systembeepoff
 
